@@ -1,0 +1,266 @@
+<!--
+*     Description     :  The vf page is used to create connection records (local / external) 
+*
+*     Created By      :   Rajeev Jain
+*
+*     Created Date    :   
+* 
+-->
+
+<apex:page extensions="CreateOrgConnectionController" id="pb" standardController="Connection__c" sidebar="false" cache="false">
+    <script>
+    	function getConnectionNameEXT(){
+        	var x = document.getElementById("extConnectionName").value;
+        	establishConnection(x);
+    	}
+    	function getConnectionNameSelf(){
+        	var x = "Self Connection";
+        	establishConnection(x);
+   		}
+    </script>
+    <!-- Page header -->
+    <header>
+        <apex:slds />
+    </header>
+    
+    <apex:form >
+        <apex:pageMessages id="idOfMessage"/>
+        
+        <apex:pageBlock id="block1">
+            
+            <div class="slds">
+                <!------------------------------------------ Connection Type Section---------------------------------->
+                <apex:pageBlockSection id="section1">
+                    
+                    <div class="slds-page-header">
+                      <div class="slds-media">
+                        
+                        <div class="slds-media__body">
+                          <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Step 1 - Getting Authorization Code
+">Step 1 - Getting Authorization Code</h1>
+                          <p class="slds-text-body_small slds-line-height_reset">This page demonstrates to get "Authorization Code" as a step 1 in OAuth flow.</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h1 class="slds-section-title--divider">Connection Type</h1>
+                    
+                    <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+                        
+                        <div class="slds-form-element">
+                            
+                            <div class="slds-form-element__control">
+                                
+                                <fieldset class="slds-form-element">
+                                    
+                                    <legend class="slds-form-element__legend slds-form-element__label">Choose new connection type</legend>
+                                    
+                                    <div class="slds-form-element__control">
+                                        
+                                        <div class="slds-radio_button-group">
+                                            
+                                            <span class="slds-button slds-radio_button">
+                                                
+                                                <input type="radio" name="connectionTypex" id="Self" value="on" class="Lcl" onclick="setConnectionType('Self')" />
+                                                
+                                                <label class="slds-radio_button__label" for="Self">
+                                                    
+                                                    <span class="slds-radio_faux">Self Connection</span>
+                                                    
+                                                </label>
+                                                
+                                            </span>
+                                            
+                                            <span class="slds-button slds-radio_button"> 
+                                                
+                                                <input type="radio" name="connectionTypex" id="External" value="on" class="Ext" onclick="setConnectionType('External')" />
+                                                
+                                                <label class="slds-radio_button__label" for="External">
+                                                    
+                                                    <span class="slds-radio_faux">External Connection</span>     
+                                                    
+                                                </label>  
+                                            </span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </apex:pageBlockSection>
+                
+                <apex:outputPanel layout="block" id="opBlock">
+                  
+                    <!-- --------------------------------- EXTERNAL BLOCK------------------------------>
+                    <apex:pageBlockSection rendered="{!connectionType == 'External'}" columns="1">
+                        <div style="margin-left:20px;">
+                            
+                            <h4 class="slds-section-title--divider" >External Connection </h4>
+                            
+                            <div class="slds-form-element">
+                                <br/>
+                                <!-- Intut connection name input field--------->
+                                <div class="slds-form-element__control" style="float:left;width:50%;">
+                                    
+                                    <legend class="slds-form-element__legend slds-form-element__label" style="margin-left:10px;">Connection Name</legend>
+                                    <input type="text" id="extConnectionName" class="slds-input" placeholder="Connection Name" style="width:60%;margin-left:10px;" />
+                                    
+                                </div>
+                                
+                                <!-- Org type radio button group------ -->
+                                <div class="slds-form-element__control" style="float:right;width:50%;">
+                                    
+                                    <fieldset class="slds-form-element">
+                                        
+                                        <legend class="slds-form-element__legend slds-form-element__label">Org Type</legend>
+                                        
+                                        <div class="slds-form-element__control">
+                                            
+                                            <div class="slds-radio_button-group">
+                                                
+                                                <span class="slds-button slds-radio_button">
+                                                    
+                                                    <input type="radio" name="orgTypeRadioButtonEC" id="ProductionEC" value="orgType" onclick="setOrgType('Production/Developer')" />
+                                                    <label class="slds-radio_button__label" for="ProductionEC">
+                                                        
+                                                        <span class="slds-radio_faux">Production/Developer</span>
+                                                        
+                                                    </label>
+                                                    
+                                                </span>
+                                                
+                                                <span class="slds-button slds-radio_button">
+                                                    
+                                                    <input type="radio" name="orgTypeRadioButtonEC" id="SandboxEC" value="orgType" onclick="setOrgType('Sandbox')" />
+                                                    
+                                                    <label class="slds-radio_button__label" for="SandboxEC">
+                                                        <span class="slds-radio_faux">Sandbox</span>
+                                                        
+                                                    </label>
+                                                    
+                                                </span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </fieldset>
+                                    
+                                </div>
+                                
+                                <br/>
+                                <br/>
+                                <br/>
+                                
+                                <div style ="  text-align: center; max-width:80%;">
+                                    <br/>
+                                    
+                                    <input type="button" class="slds-button slds-button_neutral" onclick="getConnectionNameEXT()" value="Create Connection" />
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </apex:pageBlockSection>
+                    
+                    <!--------------------------------------- Self connection------------------------------------------------------------>
+                    <apex:pageBlockSection rendered="{!connectionType== 'Self'}" columns="1" id="pbSection">
+                        
+                        <div style="margin-left:20px;">
+                            
+                            <h4 class="slds-section-title--divider">Self Connection</h4>
+                            
+                            <div class="slds-form-element">
+                                <br/>
+                                
+                                <!-- Input connection name-->
+                                <div class="" style="float:left;width:50%;">
+                                    <span class="slds-form-element__label" >Connection Name</span>
+                                    
+                                    <div class="slds-form-element__control" style="float:left;width:100%;" >
+                                        
+                                        <span class="slds-form-element__static">Self Connection</span>
+                                        
+                                    </div>
+                                </div>
+                                <!-- Org type radio button group -->
+                                <div class="slds-form-element__control" style="float:left;width:50%;">
+                                    
+                                    <fieldset class="slds-form-element">
+                                        
+                                        <legend class="slds-form-element__legend slds-form-element__label">Org Type</legend>
+                                        
+                                        <div class="slds-form-element__control">
+                                            
+                                            <div class="slds-radio_button-group">
+                                                
+                                                <span class="slds-button slds-radio_button">
+                                                    
+                                                    <input type="radio" name="orgTypeRadioButton" id="Production" value="orgType" onclick="setOrgType('Production/Developer')" />
+                                                    
+                                                    <label class="slds-radio_button__label" for="Production">
+                                                        
+                                                        <span class="slds-radio_faux">Production/Developer</span>
+                                                        
+                                                    </label>
+                                                </span>
+                                                
+                                                <span class="slds-button slds-radio_button">
+                                                    
+                                                    <input type="radio" name="orgTypeRadioButton" id="Sandbox" value="orgType" onclick="setOrgType('Sandbox')" />
+                                                    
+                                                    <label class="slds-radio_button__label" for="Sandbox">
+                                                        
+                                                        <span class="slds-radio_faux">Sandbox</span>
+                                                        
+                                                    </label>
+                                                    
+                                                </span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </fieldset>
+                                    
+                                </div>
+                                
+                                <br/>
+                                <br/>
+                                <br/>
+                                
+                                <div style ="  text-align: center; max-width:70%;">
+                                    <br/>
+                                    
+                                    <input type="button" class="slds-button slds-button_neutral" onclick = "getConnectionNameSelf()" value="Create Connection"/>
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </apex:pageBlockSection>
+                    
+                </apex:outputPanel>  
+                
+                <!-----------------------------------END ------------------------------>
+            </div>
+            
+        </apex:pageBlock>
+        <!-- action function to set connection type getter setter -->
+        <apex:actionFunction name="setConnectionType"  reRender="opBlock">
+             <apex:param name="typeOfConnection" value="" assignTo="{!connectionType}" />
+        </apex:actionFunction>
+        <!-- action function to set org type getter setter -->
+        <apex:actionFunction name="setOrgType"  reRender="">
+             <apex:param name="typeOfOrg" value="" assignTo="{!orgType}" />
+        </apex:actionFunction>
+		<!-- action function to set connection name getter setter -->
+        <apex:actionFunction name="establishConnection" action="{!createConnection}" reRender="idOfMessage" >
+            <apex:param name="x" value="x" assignTo="{!connectionName}" />
+        </apex:actionFunction>
+        
+    </apex:form>
+</apex:page>

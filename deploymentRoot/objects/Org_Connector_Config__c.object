@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>The custom setting is used to store all types of constant used in CreateConnectionController</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Base_URL_Login__c</fullName>
+        <description>Field holds value of base urk of developer and production org</description>
+        <externalId>false</externalId>
+        <label>Base URL Login</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Base_URL_Test__c</fullName>
+        <externalId>false</externalId>
+        <label>Base URL Test</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Id_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Id URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Secret_Key__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Secret Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Connection_Type_Self__c</fullName>
+        <externalId>false</externalId>
+        <label>Connection Type Self</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Consumer_Key__c</fullName>
+        <description>Holds the connected app Consumer Key</description>
+        <externalId>false</externalId>
+        <label>Consumer Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Login_Hint__c</fullName>
+        <externalId>false</externalId>
+        <label>Login Hint</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OAuth_URL__c</fullName>
+        <description>The field contains the value of OAuth Url path</description>
+        <externalId>false</externalId>
+        <label>OAuth URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Oath_Token_Url__c</fullName>
+        <externalId>false</externalId>
+        <label>Oath Token Url</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrgType_Production_developer__c</fullName>
+        <externalId>false</externalId>
+        <label>OrgType Production/developer</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Prompt_Encoded__c</fullName>
+        <externalId>false</externalId>
+        <label>Prompt Encoded</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Redirect_URI__c</fullName>
+        <externalId>false</externalId>
+        <label>Redirect URI</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Redirect_URL__c</fullName>
+        <description>The field stores the redirect URL mentioned in connected app</description>
+        <externalId>false</externalId>
+        <label>Redirect URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Self_Connection__c</fullName>
+        <externalId>false</externalId>
+        <label>Self Connection</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_URI__c</fullName>
+        <externalId>false</externalId>
+        <label>State URI</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Org Connector Config</label>
+    <visibility>Public</visibility>
+</CustomObject>
